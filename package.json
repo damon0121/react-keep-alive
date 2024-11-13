@@ -1,0 +1,27 @@
+{
+  "name": "@damony/react-keep-alive",
+  "version": "1.0.0",
+  "description": "react-keep-alive component",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "dengming0121@gmail.com",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0",
+    "react-router": "^6.0.0",
+    "react-router-dom": "^6.0.0",
+    "typescript": "^5.6.3"
+  },
+  "peerDependencies": {
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0",
+    "react-router": "^6.0.0",
+    "react-router-dom": "^6.0.0"
+  }
+}
