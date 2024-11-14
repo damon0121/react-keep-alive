@@ -28,5 +28,6 @@
     "react-dom": "^17.0.0",
     "react-router": "^6.0.0",
     "react-router-dom": "^6.0.0"
-  }
+  },
+  "repository": "git@github.com:damon0121/react-keep-alive.git"
 }

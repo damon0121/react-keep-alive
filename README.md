@@ -18,7 +18,6 @@ pnpm add @damony/react-keep-alive
 
 ```jsx
 // src/main.tsx
-import App from './App';
 import { KeepAlive } from '@damony/react-keep-alive';
 
 createRoot(document.getElementById('root')!).render(
