@@ -9,7 +9,7 @@ react-keep-alive 组件库，可用于简单项目缓存路由，即跳转路由
 ## 安装
 
 ```bash
-pnpm add react-keep-alive
+pnpm add @damony/react-keep-alive
 ```
 
 ## 使用
@@ -17,23 +17,30 @@ pnpm add react-keep-alive
 使用 KeepAlive 包裹根组件，needKeepAlivePaths即需要缓存的路由。
 
 ```jsx
-export default function AppWithKeepAlive() {
-  return (
-    <KeepAlive needKeepAlivePaths={['/list1']}>
-      <App />
+// src/main.tsx
+import App from './App';
+import { KeepAlive } from '@damony/react-keep-alive';
+
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <KeepAlive needKeepAlivePaths={['/list']}>
+      // your router
+      <RouterProvider router={router} />
     </KeepAlive>
-  );
-}
+  </StrictMode>
+);
 ```
 
-使用 useKeepAliveOutlet 代替 Outlet。
+使用 KeepAliveOutlet 代替 Outlet。
 
 ```jsx
+import { KeepAliveOutlet } from '@damony/react-keep-alive';
+
 export default function App() {
-  const keepAliveOutlet = useKeepAliveOutlet();
   return (
     ...
-    {keepAliveOutlet}
+    // <Outlet />
+    <KeepAliveOutlet />
   )
 }
 ```
@@ -41,6 +48,8 @@ export default function App() {
 
 `useOnBack`可在跳转回缓存的路由时执行某些操作，例如刷新列表。
 ```jsx
+import { useOnBack } from '@damony/react-keep-alive';
+
 export default function List(){
   useOnBack(()=>{
     // do something

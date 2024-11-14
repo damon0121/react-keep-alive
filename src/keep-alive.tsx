@@ -1,4 +1,5 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useContext, useState } from 'react';
+import { matchPath, useLocation, useOutlet } from 'react-router';
 
 type KeepElementType = React.RefObject<{ [key: string]: React.ReactNode }>;
 
@@ -39,6 +40,38 @@ const KeepAlive: React.FC<{
     <KeepAliveContext.Provider value={value}>
       {children}
     </KeepAliveContext.Provider>
+  );
+};
+
+export const KeepAliveOutlet = () => {
+  const { keepElements, needKeepAlivePaths } = useContext(KeepAliveContext);
+  const location = useLocation();
+  const outlet = useOutlet();
+  const needKeep = needKeepAlivePaths.some(
+    (path) => location.pathname === path
+  );
+
+  if (needKeep && keepElements.current) {
+    keepElements.current[location.pathname] = outlet;
+  }
+  return (
+    <>
+      {Object.entries(keepElements.current || {}).map(([pathname, element]) => {
+        return (
+          <div
+            className='keep-alive-container'
+            key={pathname}
+            id={pathname}
+            hidden={!matchPath(location.pathname, pathname)}
+          >
+            {element}
+          </div>
+        );
+      })}
+      <div className='keep-alive-container' key={'nokeep'} hidden={needKeep}>
+        {!needKeep && outlet}
+      </div>
+    </>
   );
 };
 

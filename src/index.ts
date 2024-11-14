@@ -1,12 +1,8 @@
-import KeepAlive, { KeepAliveContext } from './keep-alive';
-import {
-  useKeepAliveOutlet,
-  useKeepAliveTargetPaths,
-  useOnBack,
-} from './hooks';
+import KeepAlive, { KeepAliveContext, KeepAliveOutlet } from './keep-alive';
+import { useKeepAliveTargetPaths, useOnBack } from './hooks';
 
 export {
-  useKeepAliveOutlet,
+  KeepAliveOutlet,
   useKeepAliveTargetPaths,
   useOnBack,
   KeepAliveContext,

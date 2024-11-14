@@ -5,6 +5,7 @@ import App from './App.tsx';
 import List1 from './routes/list1/index.tsx';
 import Detail from './routes/detail/index.tsx';
 import List2 from './routes/list2/index.tsx';
+import KeepAlive from '../../../dist/index';
 import './index.css';
 
 const router = createBrowserRouter([
@@ -30,6 +31,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <KeepAlive needKeepAlivePaths={['/list1']}>
+      <RouterProvider router={router} />
+    </KeepAlive>
   </StrictMode>
 );
