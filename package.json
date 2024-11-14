@@ -1,6 +1,6 @@
 {
   "name": "@damony/react-keep-alive",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "react-keep-alive component",
   "keywords": [
     "react",
