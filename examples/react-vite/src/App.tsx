@@ -8,10 +8,10 @@ function App() {
       <div className='sidebar'>
         <ul>
           <li>
-            <Link to='/list1'>LIST 1</Link>
+            <Link to='/list/1'>LIST 1</Link>
           </li>
           <li>
-            <Link to='/list2'>LIST 2</Link>
+            <Link to='/list/2'>LIST 2</Link>
           </li>
         </ul>
       </div>

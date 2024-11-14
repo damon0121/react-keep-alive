@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
-import { matchPath, useLocation, useOutlet } from 'react-router';
+import { matchPath, useLocation, useOutlet } from 'react-router-dom';
 
 type KeepElementType = React.RefObject<{ [key: string]: React.ReactNode }>;
 
@@ -47,8 +47,8 @@ export const KeepAliveOutlet = () => {
   const { keepElements, needKeepAlivePaths } = useContext(KeepAliveContext);
   const location = useLocation();
   const outlet = useOutlet();
-  const needKeep = needKeepAlivePaths.some(
-    (path) => location.pathname === path
+  const needKeep = needKeepAlivePaths.some((path) =>
+    matchPath(path, location.pathname)
   );
 
   if (needKeep && keepElements.current) {
@@ -62,7 +62,7 @@ export const KeepAliveOutlet = () => {
             className='keep-alive-container'
             key={pathname}
             id={pathname}
-            hidden={!matchPath(location.pathname, pathname)}
+            hidden={!matchPath(pathname, location.pathname)}
           >
             {element}
           </div>

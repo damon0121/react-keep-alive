@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useKeepAliveTargetPaths, useOnBack } from '../../../../../dist';
 
 const getId = () => (Math.random() * 100).toFixed();
 export default function List1() {
+  const { catId } = useParams();
   const [list] = useState([getId(), getId(), getId()]);
   useOnBack(() => {
     console.log('onBack do something');
@@ -11,7 +12,7 @@ export default function List1() {
   useKeepAliveTargetPaths(['/detail/:id']);
   return (
     <div>
-      <h2>LIST1</h2>
+      <h2>LIST {catId}</h2>
       <ul>
         {list.map((item) => (
           <li key={item}>

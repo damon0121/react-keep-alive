@@ -2,9 +2,8 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App.tsx';
-import List1 from './routes/list1/index.tsx';
+import List from './routes/list/index.tsx';
 import Detail from './routes/detail/index.tsx';
-import List2 from './routes/list2/index.tsx';
 import KeepAlive from '../../../dist/index';
 import './index.css';
 
@@ -14,12 +13,8 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: '/list1',
-        element: <List1 />,
-      },
-      {
-        path: '/list2',
-        element: <List2 />,
+        path: '/list/:catId',
+        element: <List />,
       },
       {
         path: '/detail/:id',
@@ -31,7 +26,7 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <KeepAlive needKeepAlivePaths={['/list1']}>
+    <KeepAlive needKeepAlivePaths={['/list/:id']}>
       <RouterProvider router={router} />
     </KeepAlive>
   </StrictMode>
